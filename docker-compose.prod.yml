@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: gridironzero
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/gridironzero
+      - PORT=4000
+    ports:
+      - '4000:4000'
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - '80:80'
+    depends_on:
+      - api
+
+volumes:
+  db_data:

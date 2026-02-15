@@ -1,0 +1,12 @@
+# Render Blueprint: deploy GridironZero to the cloud
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    runtime: docker
+    name: gridironzero
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: NODE_ENV
+        value: production

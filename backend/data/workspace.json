@@ -1,0 +1,208 @@
+{
+  "fieldState": {
+    "down": 1,
+    "distance": 10
+  },
+  "offense": [
+    {
+      "slotId": "QB",
+      "label": "QB",
+      "x": 50,
+      "y": 78,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "C",
+      "label": "C",
+      "x": 50,
+      "y": 74,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "LG",
+      "label": "LG",
+      "x": 44,
+      "y": 74,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "RG",
+      "label": "RG",
+      "x": 56,
+      "y": 74,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "LT",
+      "label": "LT",
+      "x": 40,
+      "y": 74,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "RT",
+      "label": "RT",
+      "x": 60,
+      "y": 74,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "WR1",
+      "label": "WR",
+      "x": 28,
+      "y": 70,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "WR2",
+      "label": "WR",
+      "x": 72,
+      "y": 70,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "TE",
+      "label": "TE",
+      "x": 60,
+      "y": 72,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "RB1",
+      "label": "RB",
+      "x": 48,
+      "y": 84,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "RB2",
+      "label": "RB",
+      "x": 52,
+      "y": 84,
+      "playerId": null,
+      "player": null,
+      "route": []
+    }
+  ],
+  "defense": [
+    {
+      "slotId": "DE1",
+      "label": "DE",
+      "x": 36,
+      "y": 44,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "DT1",
+      "label": "DT",
+      "x": 48,
+      "y": 44,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "DT2",
+      "label": "DT",
+      "x": 52,
+      "y": 44,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "DE2",
+      "label": "DE",
+      "x": 64,
+      "y": 44,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "LB1",
+      "label": "LB",
+      "x": 38,
+      "y": 34,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "LB2",
+      "label": "LB",
+      "x": 50,
+      "y": 34,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "LB3",
+      "label": "LB",
+      "x": 62,
+      "y": 34,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "CB1",
+      "label": "CB",
+      "x": 28,
+      "y": 38,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "CB2",
+      "label": "CB",
+      "x": 72,
+      "y": 38,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "S1",
+      "label": "S",
+      "x": 40,
+      "y": 20,
+      "playerId": null,
+      "player": null,
+      "route": []
+    },
+    {
+      "slotId": "S2",
+      "label": "S",
+      "x": 60,
+      "y": 20,
+      "playerId": null,
+      "player": null,
+      "route": []
+    }
+  ]
+}
