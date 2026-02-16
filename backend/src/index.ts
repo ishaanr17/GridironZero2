@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { type Request, type Response, type NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { analyzePlays } from './analyzer';
@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/api/v1/health', (_req, res) => res.json({ status: 'ok' }));
+app.get('/api/v1/health', (_req: Request, res: Response) => res.json({ status: 'ok' }));
 
-app.get('/api/v1/players', (_req, res) => {
+app.get('/api/v1/players', (_req: Request, res: Response) => {
   try {
     const file = path.join(__dirname, '..', 'data', 'players.json');
     const raw = fs.readFileSync(file, 'utf8');
@@ -24,7 +24,7 @@ app.get('/api/v1/players', (_req, res) => {
 });
 
 // Plays listing
-app.get('/api/v1/plays', (_req, res) => {
+app.get('/api/v1/plays', (_req: Request, res: Response) => {
   try {
     const file = path.join(__dirname, '..', 'data', 'plays.json');
     if (!fs.existsSync(file)) return res.json({ plays: [] });
@@ -38,7 +38,7 @@ app.get('/api/v1/plays', (_req, res) => {
 });
 
 // Import / create plays (append)
-app.post('/api/v1/plays', (req, res) => {
+app.post('/api/v1/plays', (req: Request, res: Response) => {
   try {
     const play = req.body;
     const file = path.join(__dirname, '..', 'data', 'plays.json');
@@ -55,7 +55,7 @@ app.post('/api/v1/plays', (req, res) => {
 });
 
 // Import multiple players (append); body: { players: [{ id?, name, position, traits? }] }
-app.post('/api/v1/players/import', (req, res) => {
+app.post('/api/v1/players/import', (req: Request, res: Response) => {
   try {
     const { players: incoming } = req.body;
     if (!incoming || !Array.isArray(incoming)) {
@@ -83,7 +83,7 @@ app.post('/api/v1/players/import', (req, res) => {
 });
 
 // Import multiple plays (append); body: { plays: [ { id?, name, ... } ] }
-app.post('/api/v1/plays/import', (req, res) => {
+app.post('/api/v1/plays/import', (req: Request, res: Response) => {
   try {
     const { plays: incoming } = req.body;
     if (!incoming || !Array.isArray(incoming)) {
@@ -105,7 +105,7 @@ app.post('/api/v1/plays/import', (req, res) => {
 
 // Workspace (cloud): get/set current field state and lineup for persistence
 const workspaceFile = path.join(__dirname, '..', 'data', 'workspace.json');
-app.get('/api/v1/workspace', (_req, res) => {
+app.get('/api/v1/workspace', (_req: Request, res: Response) => {
   try {
     if (!fs.existsSync(workspaceFile)) return res.json({ workspace: null });
     const raw = fs.readFileSync(workspaceFile, 'utf8');
@@ -114,7 +114,7 @@ app.get('/api/v1/workspace', (_req, res) => {
     return res.json({ workspace: null });
   }
 });
-app.post('/api/v1/workspace', (req, res) => {
+app.post('/api/v1/workspace', (req: Request, res: Response) => {
   try {
     const workspace = req.body;
     fs.writeFileSync(workspaceFile, JSON.stringify(workspace, null, 2), 'utf8');
@@ -126,7 +126,7 @@ app.post('/api/v1/workspace', (req, res) => {
 });
 
 // Export single play
-app.get('/api/v1/play/:id', (req, res) => {
+app.get('/api/v1/play/:id', (req: Request, res: Response) => {
   try {
     const file = path.join(__dirname, '..', 'data', 'plays.json');
     const plays = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8') || '[]') : [];
@@ -140,7 +140,7 @@ app.get('/api/v1/play/:id', (req, res) => {
 });
 
 // Concepts identify/create
-app.post('/api/v1/concepts/identify', (req, res) => {
+app.post('/api/v1/concepts/identify', (req: Request, res: Response) => {
   try {
     const playInstance = req.body.play_instance;
     if (!playInstance) return res.status(400).json({ error: 'play_instance required' });
@@ -205,7 +205,7 @@ app.post('/api/v1/concepts/identify', (req, res) => {
   }
 });
 
-app.post('/api/v1/analyze', (req, res) => {
+app.post('/api/v1/analyze', (req: Request, res: Response) => {
   try {
     const { field_state, roster_id, play_instances } = req.body;
     if (!play_instances || !Array.isArray(play_instances)) {
@@ -223,7 +223,7 @@ app.post('/api/v1/analyze', (req, res) => {
 const publicDir = path.join(__dirname, '..', 'public');
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
-  app.get('*', (req, res, next) => {
+  app.get('*', (req: Request, res: Response, next: NextFunction) => {
     if (req.path.startsWith('/api')) return next();
     res.sendFile(path.join(publicDir, 'index.html'));
   });
